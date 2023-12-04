@@ -1,0 +1,13 @@
+version: "3.9"
+services:
+  postgres-sandbox:
+    image: postgres:14
+    ports:
+      - '5438:5432'
+    volumes:
+      - ./sandbox-db:/var/lib/postgresql/data
+      - ./sql/init-db.sql:/docker-entrypoint-initdb.d/init-db.sql
+    environment:
+      - POSTGRES_NAME=postgre
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
